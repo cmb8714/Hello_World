@@ -32,11 +32,7 @@ void draw(){
   //end create the speed
   
   //stay in bounds
-  if((ballX+(25/2)+1>= width)){
-    Xdirection = -1*Xdirection;
-    XSpeed -= 2;
-    score = 0;
-  }
+  
   if((ballX-(25/2)-1 <= 25)){
     Xdirection = -1*Xdirection;
     XSpeed += 25/2+1;
@@ -74,6 +70,15 @@ void draw(){
   rectMode(CENTER);
   rect(width-75, mouseY, 25, height/6);
   //end draw paddle
+   if((ballX+(25/2)+1>= width)){
+    noLoop();
+    rectMode(CORNER);
+    fill(0);
+    rect(0,0,width,height);
+    fill(255);
+    textSize(48);
+    text("You Lose!", width/2, height/2);
+  }
   if(score == 12){
     noLoop();
     rectMode(CORNER);
@@ -82,16 +87,6 @@ void draw(){
     fill(255);
     textSize(48);
     text("You Win!", width/2, height/2);
-  }
-  
-  /*//hit the paddle
-  if((ballY+(25/2)+1<= mouseY-height/12) && (ballY+(25/2)+1>= mouseY+height/12)){
-  if((ballX+(25/2)+1>= width-75)){
-    Xdirection = -1*Xdirection;
-    XSpeed -= 2;
-    score += 1;
-  }}
-  //end hit the paddle*/
-  
+  } 
   
 }
